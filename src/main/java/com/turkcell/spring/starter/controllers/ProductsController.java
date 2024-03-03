@@ -21,13 +21,23 @@ public class ProductsController
         this.productService = productService;
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public void add(@RequestBody Product product)
     {
         productService.add(product);
     }
-    @GetMapping
+    @GetMapping("/get")
     public List<Product> get() {
         return productService.getAll();
+    }
+
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody Product product)
+    {
+        productService.delete(product);
+    }
+    @PutMapping("/update")
+    public void update(@RequestBody Product productOld, Product productNew) {
+        productService.update(productOld, productNew);
     }
 }
