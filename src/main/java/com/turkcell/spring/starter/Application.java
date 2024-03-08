@@ -16,4 +16,3 @@ public class Application {
 	}
 
 }
-// Controller -> Endpoint yönetimi
