@@ -32,12 +32,12 @@ public class ProductsController
     }
 
     @DeleteMapping("/delete")
-    public void delete(@RequestBody Product product)
+    public void delete(@RequestParam int productId)
     {
-        productService.delete(product);
+        productService.delete(productId);
     }
     @PutMapping("/update")
-    public void update(@RequestBody Product productOld, Product productNew) {
-        productService.update(productOld, productNew);
+    public void update(@RequestParam int productOldId,@RequestBody Product productNew) {
+        productService.update(productOldId, productNew);
     }
 }

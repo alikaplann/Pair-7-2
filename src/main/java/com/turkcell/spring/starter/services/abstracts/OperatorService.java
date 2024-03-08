@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface OperatorService {
     void add(Operator operator);
-    void delete(Operator operator);
-    void update(Operator operatorOld, Operator operatorNew);
+    void delete(int operatorId);
+    void update(int operatorOldId, Operator operatorNew);
     List<Operator> getAll();
 }

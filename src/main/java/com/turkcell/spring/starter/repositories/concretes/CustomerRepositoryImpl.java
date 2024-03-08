@@ -17,13 +17,23 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public void delete(Customer customer) {
-        customerList.remove(customer);
+    public void delete(int customerId) {
+        for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getId() == customerId) {
+                customerList.remove(i);
+                break;
+            }
+        }
     }
 
     @Override
-    public void update(Customer customerOld, Customer customerNew) {
-        customerOld = customerNew;
+    public void update(int customerOldId, Customer customerNew) {
+        for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getId() == customerOldId) {
+                customerList.set(i, customerNew);
+                break;
+            }
+        }
     }
 
     @Override

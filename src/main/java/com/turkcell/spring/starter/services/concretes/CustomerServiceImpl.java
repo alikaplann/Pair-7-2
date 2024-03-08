@@ -24,27 +24,35 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void delete(Customer customer) {
-        if(!getAll().contains(customer)){
+    public void delete(int customerId) {
+        if(Contains(customerId)){
             throw new RuntimeException("Bu kullanıcı mevcut değil!");
         }
-        customerRepository.delete(customer);
+        customerRepository.delete(customerId);
     }
 
     @Override
-    public void update(Customer customerOld, Customer customerNew) {
-        if(!getAll().contains(customerOld)){
+    public void update(int customerOldId, Customer customerNew) {
+        if(!Contains(customerOldId)){
             throw new RuntimeException("Olmayan kullanıcıyı değiştirmeye çalışıyorsunuz");
         }
-        if(!Objects.equals(customerOld.getAddress(), "İstanbul")) {
+        if(!Objects.equals(customerNew.getAddress(), "İstanbul")) {
             throw new RuntimeException("İstanbul dışına hizmet veremiyoruz!");
         }
-        customerRepository.update(customerOld,customerNew);
+        customerRepository.update(customerOldId,customerNew);
     }
-
 
     @Override
     public List<Customer> getAll() {
         return customerRepository.getAll();
+    }
+
+    boolean Contains(int customerId){
+        for (int i = 0; i < getAll().size(); i++) {
+            if (getAll().get(i).getId() == customerId) {
+                return true;
+            }
+        }
+        return false;
     }
 }

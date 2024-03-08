@@ -3,11 +3,12 @@ package com.turkcell.spring.starter.services.abstracts;
 import com.turkcell.spring.starter.entities.Order;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface OrderService {
     public void add(Order order);
-    public void delete(Order order);
-    public void update(Order orderOld, Order orderNew);
+    public void delete(int orderId);
+    public void update(int orderOldId, Order orderNew);
 
-    ArrayList<Order> getall();
+    List<Order> getall();
 }

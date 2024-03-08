@@ -7,7 +7,7 @@ import java.util.List;
 public interface ProductRepository
 {
     void add(Product product);
-    void delete(Product product);
-    void update(Product productOld, Product productNew);
+    void delete(int productId);
+    void update(int productOldId, Product productNew);
     List<Product> getAll();
 }

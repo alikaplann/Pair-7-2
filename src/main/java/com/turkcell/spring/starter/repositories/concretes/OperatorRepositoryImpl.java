@@ -16,13 +16,23 @@ public class OperatorRepositoryImpl implements OperatorRepository {
     }
 
     @Override
-    public void delete(Operator operator) {
-        operatorList.remove(operator);
+    public void delete(int operatorId) {
+        for (int i = 0; i < operatorList.size(); i++) {
+            if (operatorList.get(i).getId() == operatorId) {
+                operatorList.remove(i);
+                break;
+            }
+        }
     }
 
     @Override
-    public void update(Operator operatorOld, Operator operatorNew) {
-        operatorOld=operatorNew;
+    public void update(int operatorOldId, Operator operatorNew) {
+        for (int i = 0; i < operatorList.size(); i++) {
+            if (operatorList.get(i).getId() == operatorOldId) {
+                operatorList.set(i, operatorNew);
+                break;
+            }
+        }
     }
     @Override
     public List<Operator> getAll() {

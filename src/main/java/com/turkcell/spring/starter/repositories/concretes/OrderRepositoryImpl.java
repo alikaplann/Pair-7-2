@@ -17,12 +17,25 @@ public class OrderRepositoryImpl implements OrderRepository {
     }
 
     @Override
-    public void delete(Order order) {
-        orderList.remove(order);
+    public void delete(int orderId) {
+        for (int i = 0; i < orderList.size(); i++) {
+            if (orderList.get(i).getId() == orderId) {
+                orderList.remove(i);
+                break;
+            }
+        }
     }
-
     @Override
-    public void update(Order orderOld, Order orderNew) {
-        orderOld=orderNew;
+    public void update(int orderOldId, Order orderNew) {
+        for (int i = 0; i < orderList.size(); i++) {
+            if (orderList.get(i).getId() == orderOldId) {
+                orderList.set(i, orderNew);
+                break;
+            }
+        }
+    }
+    @Override
+    public List<Order> getAll() {
+        return orderList;
     }
 }

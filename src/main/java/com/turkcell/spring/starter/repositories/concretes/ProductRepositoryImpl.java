@@ -17,13 +17,23 @@ public class ProductRepositoryImpl implements ProductRepository
     }
 
     @Override
-    public void delete(Product product) {
-        productList.remove(product);
+    public void delete(int productId) {
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getId() == productId) {
+                productList.remove(i);
+                break;
+            }
+        }
     }
 
     @Override
-    public void update(Product productOld, Product productNew) {
-        productOld=productNew;
+    public void update(int productOldId, Product productNew) {
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getId() == productOldId) {
+                productList.set(i, productNew);
+                break;
+            }
+        }
     }
 
     @Override
